@@ -1,16 +1,31 @@
 # quick_imgui
 
-## Including
+This library was designed to quickly get a test ImGui project up and running. It is not meant for production-ready apps, but instead for tests or quick demos. We use it inside CoolLibs to test libraries that require clients to have ImGui installed.
 
-To add this library to your project, simply add those two lines to your *CMakeLists.txt*:
+## Usage
+
+To download and link this library to your project, simply add these lines to your *CMakeLists.txt*:
 ```cmake
-add_subdirectory(path/to/quick_imgui)
+include(FetchContent)
+FetchContent_Declare(
+    quick_imgui
+    GIT_REPOSITORY https://github.com/CoolLibs/quick_imgui
+    GIT_TAG b02caa355c7ba18d21aa2a6205602a93fe44db08
+)
+FetchContent_MakeAvailable(quick_imgui)
 target_link_libraries(${PROJECT_NAME} PRIVATE quick_imgui::quick_imgui)
 ```
 
-Then include it as:
+Then you can use it like this:
 ```cpp
 #include <quick_imgui/quick_imgui.hpp>
+
+int main()
+{
+    quick_imgui::loop("Quick ImGui", []() {
+        ImGui::ShowDemoWindow();
+    });
+}
 ```
 
 ## Running the tests
