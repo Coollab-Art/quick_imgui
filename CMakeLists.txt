@@ -1,27 +1,29 @@
 cmake_minimum_required(VERSION 3.8)
 
+set(WARNINGS_AS_ERRORS_FOR_QUICK_IMGUI OFF CACHE BOOL "ON iff you want to treat warnings as errors")
+
 add_library(quick_imgui)
 add_library(quick_imgui::quick_imgui ALIAS quick_imgui)
 target_compile_features(quick_imgui PUBLIC cxx_std_11)
 
 # ---Add source files---
-target_include_directories(quick_imgui PUBLIC include)
+if(WARNINGS_AS_ERRORS_FOR_QUICK_IMGUI)
+    target_include_directories(quick_imgui PUBLIC include)
+else()
+    target_include_directories(quick_imgui SYSTEM PUBLIC include)
+endif()
 target_sources(quick_imgui PRIVATE
     src/quick_imgui.cpp
     src/ImGuiWrapper.cpp
 )
 
 # ---Setup warnings---
-if(QUICK_IMGUI_ENABLE_WARNINGS_AS_ERRORS)
-    message("-- [quick_imgui] Enabling warnings as errors for quick_imgui")
-
+if(WARNINGS_AS_ERRORS_FOR_QUICK_IMGUI)
     if(MSVC)
         target_compile_options(quick_imgui PRIVATE /WX /W4)
     else()
         target_compile_options(quick_imgui PRIVATE -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wconversion -Wsign-conversion)
     endif()
-else()
-    message("-- [quick_imgui] Not using warnings as errors for quick_imgui")
 endif()
 
 # ---Add GLFW---
