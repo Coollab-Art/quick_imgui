@@ -17,7 +17,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE quick_imgui::quick_imgui)
 ```
 If the library you are testing needs to link ImGui, also add this line in your *CMakeLists.txt*:
 ```cmake
-target_include_directories(${PROJECT_NAME} PRIVATE ${quick_imgui_SOURCE_DIR}/lib)
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${quick_imgui_SOURCE_DIR}/lib)
 ```
 Then you can use it like this:
 ```cpp
