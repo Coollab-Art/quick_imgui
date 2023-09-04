@@ -12,6 +12,7 @@ if(WARNINGS_AS_ERRORS_FOR_QUICK_IMGUI)
 else()
     target_include_directories(quick_imgui SYSTEM PUBLIC include)
 endif()
+
 target_sources(quick_imgui PRIVATE
     src/quick_imgui.cpp
     src/ImGuiWrapper.cpp
@@ -57,4 +58,5 @@ target_sources(ImGui PRIVATE lib/imgui/backends/imgui_impl_opengl3.cpp)
 
 # Link to ImGui
 target_link_libraries(quick_imgui PUBLIC ImGui)
-target_include_directories(quick_imgui PUBLIC lib)
+target_include_directories(quick_imgui SYSTEM PUBLIC lib)
+target_include_directories(quick_imgui SYSTEM PUBLIC lib/imgui)
