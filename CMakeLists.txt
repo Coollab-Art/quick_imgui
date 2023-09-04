@@ -33,7 +33,7 @@ target_link_libraries(quick_imgui PRIVATE glfw)
 
 # ---Add glad---
 add_library(glad lib/glad/src/glad.c)
-target_include_directories(glad PUBLIC lib/glad/include)
+target_include_directories(glad SYSTEM PUBLIC lib/glad/include)
 target_link_libraries(quick_imgui PRIVATE glad)
 
 # ---Add Dear ImGui---
@@ -46,7 +46,7 @@ target_sources(ImGui PRIVATE
     lib/imgui/imgui.cpp
     lib/imgui/misc/cpp/imgui_stdlib.cpp
 )
-target_include_directories(ImGui PUBLIC lib/imgui)
+target_include_directories(ImGui SYSTEM PUBLIC lib/imgui)
 target_compile_features(ImGui PUBLIC cxx_std_11)
 
 # Build ImGui with glfw
@@ -59,4 +59,3 @@ target_sources(ImGui PRIVATE lib/imgui/backends/imgui_impl_opengl3.cpp)
 # Link to ImGui
 target_link_libraries(quick_imgui PUBLIC ImGui)
 target_include_directories(quick_imgui SYSTEM PUBLIC lib)
-target_include_directories(quick_imgui SYSTEM PUBLIC lib/imgui)
