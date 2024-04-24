@@ -29,12 +29,12 @@ endif()
 
 # ---Add GLFW---
 add_subdirectory(lib/glfw)
-target_link_libraries(quick_imgui PRIVATE glfw)
+target_link_libraries(quick_imgui PUBLIC glfw)
 
 # ---Add glad---
 add_library(glad lib/glad/src/glad.c)
 target_include_directories(glad SYSTEM PUBLIC lib/glad/include)
-target_link_libraries(quick_imgui PRIVATE glad)
+target_link_libraries(quick_imgui PUBLIC glad)
 
 # ---Add Dear ImGui---
 add_library(ImGui)
@@ -50,7 +50,7 @@ target_include_directories(ImGui SYSTEM PUBLIC lib/imgui)
 target_compile_features(ImGui PUBLIC cxx_std_11)
 
 # Build ImGui with glfw
-target_link_libraries(ImGui PRIVATE glfw)
+target_link_libraries(ImGui PUBLIC glfw)
 target_sources(ImGui PRIVATE lib/imgui/backends/imgui_impl_glfw.cpp)
 
 # Build ImGui with OpenGL
