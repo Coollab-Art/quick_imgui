@@ -16,6 +16,7 @@ endif()
 target_sources(quick_imgui PRIVATE
     src/quick_imgui.cpp
     src/ImGuiWrapper.cpp
+    src/AverageTime.cpp
 )
 
 # ---Setup warnings---
