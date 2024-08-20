@@ -19,7 +19,8 @@ void AverageTime::stop()
 
 auto AverageTime::average_time_ms() const -> float
 {
-    return std::accumulate(_times.begin(), _times.end(), 0.f) / static_cast<float>(_times.size());
+    auto const& times = _times_when_paused.empty() ? _times : _times_when_paused;
+    return std::accumulate(_times.begin(), times.end(), 0.f) / static_cast<float>(times.size());
 }
 
 void AverageTime::imgui_plot() const
@@ -33,6 +34,7 @@ void AverageTime::imgui_plot() const
     }
 
     auto const& times = _times_when_paused.empty() ? _times : _times_when_paused;
+    ImGui::Text("%.2f ms", average_time_ms());
     ImGui::PlotLines("Timings (ms)", times.data(), static_cast<int>(times.size()));
 }
 
