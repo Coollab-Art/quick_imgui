@@ -9,7 +9,7 @@ void AverageTime::start()
     _start_time = std::chrono::steady_clock::now();
 }
 
-void AverageTime::end()
+void AverageTime::stop()
 {
     auto const end_time = std::chrono::steady_clock::now();
     _times.push_back(static_cast<float>((end_time - _start_time).count()) / 1'000'000.f);

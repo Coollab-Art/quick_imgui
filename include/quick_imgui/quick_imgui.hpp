@@ -13,7 +13,7 @@ void loop(const char* window_name, std::function<void()> callback);
 class AverageTime {
 public:
     void start();
-    void end();
+    void stop();
     auto average_time_ms() const -> float;
     void imgui_plot() const;
 
