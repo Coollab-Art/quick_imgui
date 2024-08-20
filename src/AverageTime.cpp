@@ -20,7 +20,7 @@ void AverageTime::stop()
 auto AverageTime::average_time_ms() const -> float
 {
     auto const& times = _times_when_paused.empty() ? _times : _times_when_paused;
-    return std::accumulate(_times.begin(), times.end(), 0.f) / static_cast<float>(times.size());
+    return std::accumulate(times.begin(), times.end(), 0.f) / static_cast<float>(times.size());
 }
 
 void AverageTime::imgui_plot() const
