@@ -1,5 +1,5 @@
 #include <quick_imgui/quick_imgui.hpp>
-#include "ImGuiWrapper.h"
+#include "ImGuiWrapper.hpp"
 
 namespace quick_imgui {
 
