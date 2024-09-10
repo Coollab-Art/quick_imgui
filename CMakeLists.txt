@@ -29,6 +29,10 @@ if(WARNINGS_AS_ERRORS_FOR_QUICK_IMGUI)
 endif()
 
 # ---Add GLFW---
+set(GLFW_BUILD_EXAMPLES OFF)
+set(GLFW_BUILD_TESTS OFF)
+set(GLFW_BUILD_DOCS OFF)
+set(GLFW_INSTALL OFF)
 add_subdirectory(lib/glfw)
 target_link_libraries(quick_imgui PUBLIC glfw)
 
