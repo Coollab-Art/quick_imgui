@@ -11,6 +11,8 @@ void AverageTime::start()
 
 void AverageTime::stop()
 {
+    if (_start_time == std::chrono::steady_clock::time_point{}) // start() was never called
+        return;
     auto const end_time = std::chrono::steady_clock::now();
     _times.push_back(static_cast<float>((end_time - _start_time).count()) / 1'000'000.f);
     if (_times.size() > 300)
