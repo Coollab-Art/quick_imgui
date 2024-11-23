@@ -6,7 +6,8 @@
 
 namespace quick_imgui {
 
-void loop(const char* window_name, std::function<void()> callback);
+void loop(const char* window_name, std::function<void()> const& loop_callback);
+void loop(const char* window_name, std::function<void()> const& init_callback, std::function<void()> const& loop_callback);
 
 /// A convenience class to measure the performance of a block of code, and display it with ImGui
 /// Press space to pause the graphics
