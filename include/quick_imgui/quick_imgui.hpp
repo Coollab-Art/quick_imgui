@@ -9,11 +9,11 @@ namespace quick_imgui {
 struct Callbacks {
     std::function<void()> init { []() {} };
     std::function<void()> loop { []() {} };
-    std::function<void(int, int, int, int)> key_callback { [](int, int, int, int) {} };
-    std::function<void(int, int, int)> mouse_button_callback { [](int, int, int) {} };
-    std::function<void(double, double)> cursor_position_callback { [](double, double) {} };
-    std::function<void(double, double)> scroll_callback { [](double, double) {} };
-    std::function<void(int, int)> size_callback { [](int, int) {} };
+    std::function<void(int, int, int, int)> key_callback { [](int key, int scancode, int action, int mods) {} }; //NOLINT(bugprone-easily-swappable-parameters)
+    std::function<void(int, int, int)> mouse_button_callback { [](int button, int action, int mods) {} }; //NOLINT(bugprone-easily-swappable-parameters)
+    std::function<void(double, double)> cursor_position_callback { [](double xpos, double ypos) {} }; //NOLINT(bugprone-easily-swappable-parameters)
+    std::function<void(double, double)> scroll_callback { [](double xoffset, double yoffset) {} }; //NOLINT(bugprone-easily-swappable-parameters)
+    std::function<void(int, int)> size_callback { [](int width, int height) {} }; //NOLINT(bugprone-easily-swappable-parameters)
 };
 
 void loop(const char* window_name, Callbacks callbacks);
