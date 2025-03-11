@@ -6,8 +6,17 @@
 
 namespace quick_imgui {
 
-void loop(const char* window_name, std::function<void()> const& loop_callback);
-void loop(const char* window_name, std::function<void()> const& init_callback, std::function<void()> const& loop_callback);
+struct Callbacks {
+    std::function<void()> loop_callback { []() {} };
+    std::function<void()> init_callback { []() {} };
+    std::function<void(int, int, int, int)> key_callback { [](int, int, int, int) {} };
+    std::function<void(int, int, int)> mouse_button_callback { [](int, int, int) {} };
+    std::function<void(double, double)> cursor_position_callback { [](double, double) {} };
+    std::function<void(double, double)> scroll_callback { [](double, double) {} };
+    std::function<void(int, int)> size_callback { [](int, int) {} };
+};
+
+void loop(const char* window_name, Callbacks callbacks);
 
 /// A convenience class to measure the performance of a block of code, and display it with ImGui
 /// Press space to pause the graphics
