@@ -4,7 +4,7 @@ set(WARNINGS_AS_ERRORS_FOR_QUICK_IMGUI OFF CACHE BOOL "ON iff you want to treat 
 
 add_library(quick_imgui)
 add_library(quick_imgui::quick_imgui ALIAS quick_imgui)
-target_compile_features(quick_imgui PUBLIC cxx_std_14)
+target_compile_features(quick_imgui PUBLIC cxx_std_20)
 
 # ---Add source files---
 if(WARNINGS_AS_ERRORS_FOR_QUICK_IMGUI)
