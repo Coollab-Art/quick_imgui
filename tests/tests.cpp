@@ -11,8 +11,8 @@ int main()
     quick_imgui::loop(
         "Quick ImGui",
         {
-            .loop_callback = []() { ImGui::ShowDemoWindow(); },
-            .init_callback = []() { std::cout << "Init\n"; },
+            .init = []() { std::cout << "Init\n"; },
+            .loop = []() { ImGui::ShowDemoWindow(); },
             .key_callback = key_callback,
             .mouse_button_callback = [](int button, int action, int mods) { std::cout << "Button: " << button << " Action: " << action << " Mods: " << mods << std::endl; },
         }

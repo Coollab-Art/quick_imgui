@@ -13,7 +13,7 @@ namespace {
 
 void loop(const char* window_name, Callbacks callbacks) {
     GLFWwindow* const window = ImGuiWrapper::create_window(window_name);
-    callbacks.init_callback();
+    callbacks.init();
 
     // It will work as the local copy of callbacks will live during this loop function (same lifetime as the window)
     glfwSetWindowUserPointer(window, &callbacks);
@@ -48,7 +48,7 @@ void loop(const char* window_name, Callbacks callbacks) {
     {
         glfwPollEvents();
         ImGuiWrapper::begin_frame({0.302f, 0.302f, 0.302f, 1.000f});
-        callbacks.loop_callback();
+        callbacks.loop();
         ImGuiWrapper::end_frame(window);
     }
 

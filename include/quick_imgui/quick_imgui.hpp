@@ -7,8 +7,8 @@
 namespace quick_imgui {
 
 struct Callbacks {
-    std::function<void()> loop_callback { []() {} };
-    std::function<void()> init_callback { []() {} };
+    std::function<void()> init { []() {} };
+    std::function<void()> loop { []() {} };
     std::function<void(int, int, int, int)> key_callback { [](int, int, int, int) {} };
     std::function<void(int, int, int)> mouse_button_callback { [](int, int, int) {} };
     std::function<void(double, double)> cursor_position_callback { [](double, double) {} };
