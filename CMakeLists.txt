@@ -53,6 +53,7 @@ target_sources(ImGui PRIVATE
 )
 target_include_directories(ImGui SYSTEM PUBLIC lib/imgui)
 target_compile_features(ImGui PUBLIC cxx_std_11)
+target_compile_definitions(ImGui PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS)
 
 # Build ImGui with glfw
 target_link_libraries(ImGui PUBLIC glfw)
